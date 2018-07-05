@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.mycompany.mavenproject1.Reservacion" table = "reservacion">
+      
+      <meta attribute = "class-description">
+         Reservacion. 
+      </meta>
+      
+      <id name = "idreserva" type = "int" column = "idreserva">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "idcliente" column = "idcliente" type = "int"/>
+      <property name = "fecha de llegada" column = "fecha de llegada" type = "datetime"/>
+      <property name = "fecha de salida" column = "fecha de salida" type = "datetime"/>
+      
+   </class>
+</hibernate-mapping>
