@@ -136,25 +136,25 @@ public class Main {
             return ret.toString();
         });
         
-            get("/form", (req, res)->{
-                StringBuilder ret = new StringBuilder();
-                ret.append("<form action='/agregar' method='post'>");
-                ret.append("Nombre:<br>"+"<input type='text' name='nombre'>"
-
-                +"Telefono:<br>"
-                +"<input type=\"text\" name=\"telefono\" >" 
-                +"<br><br>"
-                +"Direccion:<br>"
-                +"<input type=\"text\" name=\"direccion\">" 
-                +"<br><br>"
-                +"Estado:<br>"	
-                +"<input type=\"text\" name=\"estado\">" 
-                +"<br><br>"
-                +"<input type=\"submit\" value=\"Registrar\">" 
-                +"</form>" );
-
-                return ret.toString();
-            });
+//            get("/form", (req, res)->{
+//                StringBuilder ret = new StringBuilder();
+//                ret.append("<form action='/agregar' method='post'>");
+//                ret.append("Nombre:<br>"+"<input type='text' name='nombre'>"
+//
+//                +"Telefono:<br>"
+//                +"<input type=\"text\" name=\"telefono\" >" 
+//                +"<br><br>"
+//                +"Direccion:<br>"
+//                +"<input type=\"text\" name=\"direccion\">" 
+//                +"<br><br>"
+//                +"Estado:<br>"	
+//                +"<input type=\"text\" name=\"estado\">" 
+//                +"<br><br>"
+//                +"<input type=\"submit\" value=\"Registrar\">" 
+//                +"</form>" );
+//                      
+//                return ret.toString();
+//            });
                       
         post("/agregar", (req, res) -> {
         
@@ -182,7 +182,7 @@ public class Main {
             } finally {
                 session.close();
             }
-            return "Insertado:" + insertID;
+            return new Gson().toJson("Agregado");
         });
         
 
@@ -222,10 +222,17 @@ public class Main {
             return null;
         });
         
+        get("/reservar/:id", (req, res)->{
+        res.redirect("form.html");
+        return null;
+        
+        });
+        
         post("/reservar/:id", (req, res)->{
-        int IdCliente = Integer.parseInt(req.params("IdCliente"));
-        String FechaDeLlegada = req.params("FechaDeLlegada");
-        String FechaDeSalida = req.params("FechaDeSalida");
+        int IDreserva = Integer.parseInt(req.params("IDreserva"));
+        int IDcliente = Integer.parseInt(req.params("IDcliente"));
+        String fecha_llegada = req.params("fecha_llegada");
+        String fecha_salida = req.params("fecha_salida");
         
         
             String insertID = "";
@@ -234,7 +241,7 @@ public class Main {
 
             try {
                 tx = session.beginTransaction();
-                Reservacion reserva = new Reservacion(IdCliente, FechaDeLlegada, FechaDeSalida);
+                Reservacion reserva = new Reservacion(IDreserva, IDcliente, fecha_llegada, fecha_salida);
                 insertID = session.save(reserva).toString();
                 tx.commit();
 
@@ -246,8 +253,9 @@ public class Main {
             } finally {
                 session.close();
             }
-            return "Insertado:" + insertID;
+            return new Gson().toJson("id");
         });
+        
         
         get("/ver/:id", (req, res) -> {
             String id = req.params("id");

@@ -10,40 +10,54 @@ package com.mycompany.mavenproject1;
  * @author erquier
  */
 public class Reservacion {
-    private int IdCliente;
-    private String FechaDeLlegada;
-    private String FechaDeSalida;
+    private int IDreserva;
+    private int IDcliente;
+    private String fecha_llegada;
+    private String fecha_salida;
 
-    public Reservacion(int IdCliente, String FechaDeLlegada, String FechaDeSalida) {
-        this.IdCliente = IdCliente;
-        this.FechaDeLlegada = FechaDeLlegada;
-        this.FechaDeSalida = FechaDeSalida;
+    public Reservacion(int IDreserva, int IDcliente, String fecha_llegada, String fecha_salida) {
+        this.IDreserva = IDreserva;
+        this.IDcliente = IDcliente;
+        this.fecha_llegada = fecha_llegada;
+        this.fecha_salida = fecha_salida;
     }
 
-    public int getIdcliente() {
-        return IdCliente;
+    public int getIDreserva() {
+        return IDreserva;
     }
 
-    public void setIdcliente(int Idcliente) {
-        this.IdCliente = Idcliente;
+    public void setIDreserva(int IDreserva) {
+        this.IDreserva = IDreserva;
     }
 
-    public String getFechaDeLlegada() {
-        return FechaDeLlegada;
+    public int getIDcliente() {
+        return IDcliente;
     }
 
-    public void setFechaDeLlegada(String FechaDeLlegada) {
-        this.FechaDeLlegada = FechaDeLlegada;
+    public void setIDcliente(int IDcliente) {
+        this.IDcliente = IDcliente;
     }
 
-    public String getFechaDeSalida() {
-        return FechaDeSalida;
+    public String getFecha_llegada() {
+        return fecha_llegada;
     }
 
-    public void setFechaDeSalida(String FechaDeSalida) {
-        this.FechaDeSalida = FechaDeSalida;
+    public void setFecha_llegada(String fecha_llegada) {
+        this.fecha_llegada = fecha_llegada;
     }
+
+    public String getFecha_salida() {
+        return fecha_salida;
+    }
+
+    public void setFecha_salida(String fecha_salida) {
+        this.fecha_salida = fecha_salida;
+    }
+
+   
+
     
+        
     
     
 }
