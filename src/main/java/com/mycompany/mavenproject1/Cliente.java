@@ -11,59 +11,63 @@ package com.mycompany.mavenproject1;
  */
 public class Cliente {
 
-    private int idcliente;
-    private String nombre;
-    private String telefono;
-    private String direccion;
-    private int estado;
+    private int IDcliente;
+    private String Nombre;
+    private String Telefono;
+    private String Direccion;
+    private int Estado;
     
     public Cliente() {
     }
 
-    public Cliente(String nombre, String telefono, String direccion,int estado) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.estado=estado;
+    public Cliente(String Nombre, String Telefono, String Direccion, int Estado) {
+        this.Nombre = Nombre;
+        this.Telefono = Telefono;
+        this.Direccion = Direccion;
+        this.Estado = Estado;
     }
 
-    public int getIdcliente() {
-        return idcliente;
+
+
+    public int getIDcliente() {
+        return IDcliente;
     }
 
-    public void setIdcliente(int id) {
-        this.idcliente = id;
+    public void setIDcliente(int IDcliente) {
+        this.IDcliente = IDcliente;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public String getTelefono() {
-        return telefono;
+        return Telefono;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefono(String Telefono) {
+        this.Telefono = Telefono;
     }
 
     public String getDireccion() {
-        return direccion;
+        return Direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccion(String Direccion) {
+        this.Direccion = Direccion;
     }
-    
-    public int getEstado(){
-        return this.estado;
+
+    public int getEstado() {
+        return Estado;
     }
-    
-    public void setEstado(int estado){
-        this.estado=estado;
+
+    public void setEstado(int Estado) {
+        this.Estado = Estado;
     }
+
+   
 }

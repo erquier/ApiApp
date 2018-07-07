@@ -50,28 +50,28 @@ public class Main {
             throw new ExceptionInInitializerError(ex);
         }
 
-        get("/ver", (req, res) -> {
-            String id = req.queryParams("id");
-
-            Session session = factory.openSession();
-            Transaction tx = null;
-
-            StringBuilder ret = new StringBuilder();
-
-            try {
-                Cliente cli = (Cliente) session.get(Cliente.class, Integer.parseInt(id));
-                ret.append("Nombre:<b>"+cli.getNombre()+"</b><br>");
-                ret.append("Direccion:<b>"+cli.getDireccion()+"</b><br>");
-
-            } catch (HibernateException e) {
-               
-                e.printStackTrace();
-                return e.toString();
-            } finally {
-                session.close();
-            }
-            return ret.toString();
-        });
+//        get("/ver", (req, res) -> {
+//            String id = req.queryParams("id");
+//
+//            Session session = factory.openSession();
+//            Transaction tx = null;
+//
+//            StringBuilder ret = new StringBuilder();
+//
+//            try {
+//                Cliente cli = (Cliente) session.get(Cliente.class, Integer.parseInt(id));
+//                ret.append("Nombre:<b>"+cli.getNombre()+"</b><br>");
+//                ret.append("Direccion:<b>"+cli.getDireccion()+"</b><br>");
+//
+//            } catch (HibernateException e) {
+//               
+//                e.printStackTrace();
+//                return e.toString();
+//            } finally {
+//                session.close();
+//            }
+//            return ret.toString();
+//        });
 
          get("/actualizar", (req, res) -> {
             String id = req.queryParams("id");
@@ -119,9 +119,9 @@ public class Main {
 
                 for (Iterator iterator = clientes.iterator(); iterator.hasNext();) {
                     Cliente cliente = (Cliente) iterator.next();
-                    ret.append("<tr><td>" + cliente.getIdcliente() + "</td>");
+                    ret.append("<tr><td>" + cliente.getIDcliente() + "</td>");
                     ret.append("<td>" + cliente.getNombre() + "</td>");  
-                    ret.append("<td>" + "<a href=/actualizar?id="+cliente.getIdcliente()+">Actualizar</a>" + "</td></tr>");
+                    ret.append("<td>" + "<a href=/actualizar?id="+cliente.getIDcliente()+">Actualizar</a>" + "</td></tr>");
                 }
                 ret.append("</table>");
                 tx.commit();
@@ -158,11 +158,11 @@ public class Main {
                       
         post("/agregar", (req, res) -> {
         
-        String nombre = req.queryParams("nombre");
-        String telefono = req.queryParams("telefono");
-        String direccion = req.queryParams("direccion");
+        String Nombre = req.queryParams("Nombre");
+        String Telefono = req.queryParams("Telefono");
+        String Direccion = req.queryParams("Direccion");
         
-        int estado = Integer.parseInt(req.queryParams("estado"));
+        int Estado = Integer.parseInt(req.queryParams("Estado"));
         
             String insertID = "";
             Session session = factory.openSession();
@@ -170,7 +170,7 @@ public class Main {
 
             try {
                 tx = session.beginTransaction();
-                Cliente cliente = new Cliente(nombre, telefono, direccion, estado);
+                Cliente cliente = new Cliente(Nombre, Telefono, Direccion, Estado);
                 insertID = session.save(cliente).toString();
                 tx.commit();
 
@@ -222,14 +222,9 @@ public class Main {
             return null;
         });
         
-        get("/reservar/:id", (req, res)->{
-        res.redirect("form.html");
-        return null;
+
+        post("/reservar", (req, res)->{
         
-        });
-        
-        post("/reservar/:id", (req, res)->{
-        int IDreserva = Integer.parseInt(req.params("IDreserva"));
         int IDcliente = Integer.parseInt(req.params("IDcliente"));
         String fecha_llegada = req.params("fecha_llegada");
         String fecha_salida = req.params("fecha_salida");
@@ -241,7 +236,7 @@ public class Main {
 
             try {
                 tx = session.beginTransaction();
-                Reservacion reserva = new Reservacion(IDreserva, IDcliente, fecha_llegada, fecha_salida);
+                Reservacion reserva = new Reservacion(IDcliente, fecha_llegada, fecha_salida);
                 insertID = session.save(reserva).toString();
                 tx.commit();
 
