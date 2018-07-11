@@ -50,29 +50,6 @@ public class Main {
             throw new ExceptionInInitializerError(ex);
         }
 
-//        get("/ver", (req, res) -> {
-//            String id = req.queryParams("id");
-//
-//            Session session = factory.openSession();
-//            Transaction tx = null;
-//
-//            StringBuilder ret = new StringBuilder();
-//
-//            try {
-//                Cliente cli = (Cliente) session.get(Cliente.class, Integer.parseInt(id));
-//                ret.append("Nombre:<b>"+cli.getNombre()+"</b><br>");
-//                ret.append("Direccion:<b>"+cli.getDireccion()+"</b><br>");
-//
-//            } catch (HibernateException e) {
-//               
-//                e.printStackTrace();
-//                return e.toString();
-//            } finally {
-//                session.close();
-//            }
-//            return ret.toString();
-//        });
-
          get("/actualizar", (req, res) -> {
             String id = req.queryParams("id");
 
@@ -136,25 +113,6 @@ public class Main {
             return ret.toString();
         });
         
-//            get("/form", (req, res)->{
-//                StringBuilder ret = new StringBuilder();
-//                ret.append("<form action='/agregar' method='post'>");
-//                ret.append("Nombre:<br>"+"<input type='text' name='nombre'>"
-//
-//                +"Telefono:<br>"
-//                +"<input type=\"text\" name=\"telefono\" >" 
-//                +"<br><br>"
-//                +"Direccion:<br>"
-//                +"<input type=\"text\" name=\"direccion\">" 
-//                +"<br><br>"
-//                +"Estado:<br>"	
-//                +"<input type=\"text\" name=\"estado\">" 
-//                +"<br><br>"
-//                +"<input type=\"submit\" value=\"Registrar\">" 
-//                +"</form>" );
-//                      
-//                return ret.toString();
-//            });
                       
         post("/agregar", (req, res) -> {
         
@@ -251,6 +209,8 @@ public class Main {
             return new Gson().toJson("id");
         });
         
+
+        
         
         get("/ver/:id", (req, res) -> {
             String id = req.params("id");
@@ -263,6 +223,29 @@ public class Main {
             try {
                 Cliente cli = (Cliente) session.get(Cliente.class, Integer.parseInt(id));
               return new Gson().toJson(cli);
+             
+              
+            } catch (HibernateException e) {
+              
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                session.close();
+            }
+         
+        });
+        
+                get("/reserva/:id", (req, res) -> {
+            String id = req.params("id");
+            
+            Session session = factory.openSession();
+            Transaction tx = null;
+
+            StringBuilder ret = new StringBuilder();
+
+            try {
+               Reservacion reser = (Reservacion) session.get(Reservacion.class, Integer.parseInt(id));
+              return new Gson().toJson(reser);
              
               
             } catch (HibernateException e) {
