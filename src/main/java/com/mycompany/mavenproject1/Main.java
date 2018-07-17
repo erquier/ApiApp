@@ -39,7 +39,7 @@ public class Main {
         
                 after((Filter) (request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
-            response.header("Access-Control-Allow-Methods", "GET");
+            response.header("Access-Control-Allow-Methods", "GET, POST");
         });
 
 
@@ -116,11 +116,11 @@ public class Main {
                       
         post("/agregar", (req, res) -> {
         
-        String Nombre = req.queryParams("Nombre");
-        String Telefono = req.queryParams("Telefono");
-        String Direccion = req.queryParams("Direccion");
+        String nombre = req.queryParams("nombre");
+        String telefono = req.queryParams("telefono");
+        String direccion = req.queryParams("direccion");
         
-        int Estado = Integer.parseInt(req.queryParams("Estado"));
+        int estado = Integer.parseInt(req.queryParams("estado"));
         
             String insertID = "";
             Session session = factory.openSession();
@@ -128,7 +128,7 @@ public class Main {
 
             try {
                 tx = session.beginTransaction();
-                Cliente cliente = new Cliente(Nombre, Telefono, Direccion, Estado);
+                Cliente cliente = new Cliente(nombre, telefono, direccion, estado);
                 insertID = session.save(cliente).toString();
                 tx.commit();
 

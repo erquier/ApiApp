@@ -15,6 +15,11 @@ public class Reservacion {
     private String fecha_llegada;
     private String fecha_salida;
 
+    public Reservacion() {
+    }
+    
+    
+
     public Reservacion(int IDcliente, String fecha_llegada, String fecha_salida) {
         this.IDcliente = IDcliente;
         this.fecha_llegada = fecha_llegada;

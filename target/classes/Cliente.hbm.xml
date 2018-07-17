@@ -14,9 +14,9 @@
          <generator class="native"/>
       </id>
       
-      <property name = "Nombre" column = "Nombre" type = "string"/>
-      <property name = "Telefono" column = "Telefono" type = "string"/>
-      <property name = "Direccion" column = "Direccion" type = "string"/>
-      <property name = "Estado" column = "Estado" type = "int"/>
+      <property name = "nombre" column = "nombre" type = "string"/>
+      <property name = "telefono" column = "telefono" type = "string"/>
+      <property name = "direccion" column = "direccion" type = "string"/>
+      <property name = "estado" column = "estado" type = "int"/>
    </class>
 </hibernate-mapping>

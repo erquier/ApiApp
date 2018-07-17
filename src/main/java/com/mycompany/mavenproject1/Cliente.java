@@ -12,22 +12,22 @@ package com.mycompany.mavenproject1;
 public class Cliente {
 
     private int IDcliente;
-    private String Nombre;
-    private String Telefono;
-    private String Direccion;
-    private int Estado;
-    
+    private String nombre;
+    private String telefono;
+    private String direccion;
+    private int estado;
+
     public Cliente() {
     }
+    
+    
 
-    public Cliente(String Nombre, String Telefono, String Direccion, int Estado) {
-        this.Nombre = Nombre;
-        this.Telefono = Telefono;
-        this.Direccion = Direccion;
-        this.Estado = Estado;
+    public Cliente(String nombre, String telefono, String direccion, int estado) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.estado = estado;
     }
-
-
 
     public int getIDcliente() {
         return IDcliente;
@@ -38,36 +38,43 @@ public class Cliente {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getDireccion() {
-        return Direccion;
+        return direccion;
     }
 
-    public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public int getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(int Estado) {
-        this.Estado = Estado;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
+    
+    
+    
+    
+
+
+    
 
    
 }
